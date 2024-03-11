@@ -98,7 +98,7 @@ td {
   padding: 10px 40px;
   color: white;
   display: flex;
-  align-items: center;
+  align-items: center
 }
 .side-menu li:hover {
   background: white;

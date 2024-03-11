@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Design by foolishdeveloper.com -->
+  <title>Glassmorphism login Form Tutorial in html css</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+  <!--Stylesheet-->
+  <link rel="stylesheet" href="css.css">
+
+
+</head>
+
+<body>
+  <div class="background">
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+  <form>
+    <h3>Ragister Here</h3>
+
+    <label for="username">Email</label>
+    <input type="text" placeholder="Email" id="email" required>
+
+
+    <label for="username">phone</label>
+    <input type="number" placeholder="phone" id="phone">
+
+    <label for="password">Password</label>
+    <input type="password" placeholder="Password" id="password" required>
+    <label for="password"> confirm Password</label>
+    <input type="password" placeholder="Password" id="password2" required>
+    
+    <button type="button" onclick="save()" id="submit">Sign In In</button>
+    
+  </form>
+</body>
+<script>
+         function save()
+
+  {
+    let email, phone, password, confirm_password;
+    email = document.getElementById("email").value
+    phone = document.getElementById("phone").value
+    password = document.getElementById("password").value
+    confirm_password = document.getElementById("password2").value
+
+    let user_records = new Array;
+    user_records = JSON.parse(localStorage.getItem("users")) ? JSON.parse(localStorage.getItem("users")) :
+      []
+    if (user_records.some((v) => { return v.email == email })) {
+      alert("Duplication of Records");
+    }
+    else {
+      if (password == confirm_password) {
+        user_records.push({
+
+          "email": email,
+          "phone": phone,
+          "password": password,
+
+        })
+        localStorage.setItem("users", JSON.stringify(user_records));
+        location.href = "login.html";
+      }
+      else {
+        alert("password not match");
+
+      }
+
+    }
+  }
+
+</script>
+
+</html>
